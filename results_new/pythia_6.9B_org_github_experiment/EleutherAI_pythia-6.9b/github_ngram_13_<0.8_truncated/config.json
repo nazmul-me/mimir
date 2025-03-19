@@ -1,0 +1,87 @@
+{
+    "experiment_name": "pythia_6.9B_org_github_experiment",
+    "base_model": "EleutherAI/pythia-6.9b",
+    "dataset_member": "the_pile",
+    "dataset_nonmember": "the_pile",
+    "output_name": "unified_mia",
+    "dataset_nonmember_other_sources": null,
+    "pretokenized": false,
+    "revision": null,
+    "presampled_dataset_member": null,
+    "presampled_dataset_nonmember": null,
+    "token_frequency_map": null,
+    "dataset_key": null,
+    "specific_source": "Github_ngram_13_<0.8_truncated",
+    "full_doc": false,
+    "max_substrs": 20,
+    "dump_cache": false,
+    "load_from_cache": false,
+    "load_from_hf": true,
+    "blackbox_attacks": [
+        "loss",
+        "ref",
+        "min_k",
+        "zlib"
+    ],
+    "tokenization_attack": false,
+    "quantile_attack": false,
+    "n_samples": 1000,
+    "max_tokens": 512,
+    "max_data": 100000,
+    "min_words": 100,
+    "max_words": 200,
+    "max_words_cutoff": true,
+    "batch_size": 50,
+    "chunk_size": 20,
+    "scoring_model_name": null,
+    "top_k": 40,
+    "do_top_k": false,
+    "top_p": 0.96,
+    "do_top_p": false,
+    "pre_perturb_pct": 0.0,
+    "pre_perturb_span_length": 5,
+    "tok_by_tok": false,
+    "fpr_list": [
+        0.001,
+        0.01
+    ],
+    "random_seed": 0,
+    "ref_config": {
+        "models": [
+            "stabilityai/stablelm-base-alpha-3b-v2"
+        ]
+    },
+    "recall_config": null,
+    "neighborhood_config": {
+        "model": "bert",
+        "n_perturbation_list": [
+            25
+        ],
+        "dump_cache": false,
+        "load_from_cache": true,
+        "original_tokenization_swap": true,
+        "pct_swap_bert": 0.05,
+        "neighbor_strategy": "random",
+        "span_length": 2,
+        "random_fills_tokens": false,
+        "random_fills": false,
+        "pct_words_masked": 0.3,
+        "buffer_size": 1,
+        "top_p": 1.0,
+        "max_tries": 100,
+        "ceil_pct": false
+    },
+    "env_config": {
+        "cache_dir": "/home/mhaque4/Music/MIA/mimir/MIMIR_CACHE_PATH",
+        "data_source": "/home/mhaque4/Music/MIA/mimir/MIMIR_DATA_SOURCE",
+        "device": "cuda:0",
+        "device_map": null,
+        "device_aux": "cuda:0",
+        "compile": true,
+        "int8": false,
+        "half": false,
+        "results": "results_new",
+        "tmp_results": "tmp_results"
+    },
+    "openai_config": null
+}

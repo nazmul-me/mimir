@@ -527,7 +527,7 @@ def main(config: ExperimentConfig):
         mask_model = attacker_ne.get_mask_model()
 
     print("MOVING BASE MODEL TO GPU...", end="", flush=True)
-    base_model.load()
+    # base_model.load()
 
     print(f"Loading dataset {config.dataset_nonmember}...")
     # data, seq_lens, n_samples = generate_data(config.dataset_member)

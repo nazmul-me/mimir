@@ -13,9 +13,11 @@ import torch as ch
 import numpy as np
 
 # Read environment variables
-CACHE_PATH = os.environ.get('MIMIR_CACHE_PATH', None)
-DATA_SOURCE = os.environ.get('MIMIR_DATA_SOURCE', None)
+# CACHE_PATH = os.environ.get('MIMIR_CACHE_PATH', None)
+# DATA_SOURCE = os.environ.get('MIMIR_DATA_SOURCE', None)
 
+CACHE_PATH = "/home/mhaque4/Music/MIA/mimir/MIMIR_CACHE_PATH"
+DATA_SOURCE = "/home/mhaque4/Music/MIA/mimir/MIMIR_DATA_SOURCE"
 
 def fix_seed(seed: int = 0):
     """

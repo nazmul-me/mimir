@@ -8,9 +8,9 @@ analysis/*/
 
 # Ignore results
 tmp_results*/
-results*/
+# results*/
 models/*
-*results*/
+# *results*/
 neighbor_gen_new/*
 new_neigh_mia/*
 
@@ -65,3 +65,6 @@ DEBUG/*
 
 # Ignore resources for edited members
 edit_distance_members
+
+.venv/*
+MIMIR_CACHE_PATH/*

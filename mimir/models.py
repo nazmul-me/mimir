@@ -1,6 +1,7 @@
 """
     Model definitions, with basic helper functions. Supports any model as long as it supports the functions specified in Model.
 """
+import os
 import torch
 import torch.nn as nn
 import openai
@@ -108,8 +109,11 @@ class Model(nn.Module):
                 input_ids = labels[:, begin_loc:end_loc].to(self.device)
                 target_ids = input_ids.clone()
                 target_ids[:, :-trg_len] = -100
+                self.model.to('cpu')
+                logits = self.model(input_ids.to('cpu'), labels=target_ids.to('cpu')).logits
+                
 
-                logits = self.model(input_ids, labels=target_ids).logits
+                # logits = self.model(input_ids, labels=target_ids).logits
                 if no_grads:
                     logits = logits.cpu()
                 shift_logits = logits[..., :-1, :].contiguous()
@@ -188,8 +192,30 @@ class Model(nn.Module):
                 model = transformers.AutoModelForCausalLM.from_pretrained(
                     self.name, **model_kwargs, trust_remote_code=True, cache_dir=self.cache_dir)
             else:
+                #org model
                 model = transformers.AutoModelForCausalLM.from_pretrained(
                     self.name, **model_kwargs, device_map=device_map, cache_dir=self.cache_dir)
+
+                #dyn model
+                model = torch.quantization.quantize_dynamic(
+            model, {nn.Linear}, dtype=torch.qint8)
+
+                #compressed models
+                # bnb_config = transformers.BitsAndBytesConfig(
+                #     load_in_4bit=True,
+                #     bnb_4bit_quant_type="nf4",
+                #     bnb_4bit_compute_dtype=torch.bfloat16,
+                # )
+                # bnb_config = transformers.BitsAndBytesConfig(
+                #     load_in_8bit=True
+                # )
+                # model = transformers.AutoModelForCausalLM.from_pretrained(
+                #     self.name, **model_kwargs, device_map='cuda:0', cache_dir=self.cache_dir, quantization_config=bnb_config)
+                #end compressed models
+                torch.save(model.state_dict(), "temp.p")
+                print('Size (MB):', os.path.getsize("temp.p")/1e6)
+                os.remove('temp.p')
+                
         else:
             model = None
 
