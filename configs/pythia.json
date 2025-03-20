@@ -1,6 +1,6 @@
 {
-    "experiment_name": "pythia_2.8B_dyn8bit_github_experiment",
-    "base_model": "EleutherAI/pythia-2.8B",
+    "experiment_name": "pythia_6.9B_dyn8bit_github_experiment",
+    "base_model": "EleutherAI/pythia-6.9B",
     "dataset_member": "the_pile",
     "dataset_nonmember": "the_pile",
     "min_words": 100,
