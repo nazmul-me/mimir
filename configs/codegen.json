@@ -1,6 +1,6 @@
 {
-    "experiment_name": "codegen16B_mono_org_github_experiment",
-    "base_model": "Salesforce/codegen-16B-mono",
+    "experiment_name": "codegen350M_Multi_dyn8bit_github_experiment",
+    "base_model": "Salesforce/codegen-350M-multi",
     "dataset_member": "the_pile",
     "dataset_nonmember": "the_pile",
     "min_words": 100,
