@@ -109,11 +109,11 @@ class Model(nn.Module):
                 input_ids = labels[:, begin_loc:end_loc].to(self.device)
                 target_ids = input_ids.clone()
                 target_ids[:, :-trg_len] = -100
-                self.model.to('cpu')
-                logits = self.model(input_ids.to('cpu'), labels=target_ids.to('cpu')).logits
+                # self.model.to('cpu')
+                # logits = self.model(input_ids.to('cpu'), labels=target_ids.to('cpu')).logits
                 
 
-                # logits = self.model(input_ids, labels=target_ids).logits
+                logits = self.model(input_ids, labels=target_ids).logits
                 if no_grads:
                     logits = logits.cpu()
                 shift_logits = logits[..., :-1, :].contiguous()
@@ -194,11 +194,11 @@ class Model(nn.Module):
             else:
                 #org model
                 model = transformers.AutoModelForCausalLM.from_pretrained(
-                    self.name, **model_kwargs, device_map=device_map, cache_dir=self.cache_dir)
+                    self.name, **model_kwargs, device_map='cuda:0', cache_dir=self.cache_dir)
 
                 #dyn model
-                model = torch.quantization.quantize_dynamic(
-            model, {nn.Linear}, dtype=torch.qint8)
+            #     model = torch.quantization.quantize_dynamic(
+            # model, {nn.Linear}, dtype=torch.qint8)
 
                 #compressed models
                 # bnb_config = transformers.BitsAndBytesConfig(
