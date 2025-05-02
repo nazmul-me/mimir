@@ -1,5 +1,3 @@
-# MIMIR
-
 ## Instructions
 
 First install the python dependencies
@@ -56,3 +54,56 @@ To add an attack, create a file for your attack (e.g. `attacks/my_attack.py`) an
 Then, add a name for your attack to the dictionary in `attacks/utils.py`.
 
 If you would like to submit your attack to the repository, please open a pull request describing your attack and the paper it is based on.
+
+# Task Generation
+
+## installation
+
+```
+pip install codebleu
+pip install tree-sitter-python
+```
+
+For more information, follow https://pypi.org/project/codebleu/
+
+## Evaluation
+
+Go to `taskEvaluation` folder and run the following-
+
+```
+python3 codeBLEU_pythia.py
+```
+
+# Results of RQs
+
+Go to `RQsResult` folder and run the following ipynb file for each of the RQs-
+
+RQ-1:
+
+```
+RQ1-precisionVStask.ipynb
+```
+
+RQ-2:
+
+```
+RQ2-precisionVSmia.ipynb
+```
+
+RQ-3:
+
+```
+RQ3-taskVSmia.ipynb
+```
+
+RQ-4:
+
+```
+RQ4-generalizibilty.ipynb
+```
+
+Discussion part results:
+
+```
+Discussion.ipynb
+```
