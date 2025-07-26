@@ -76,7 +76,7 @@ python3 codeBLEU_pythia.py
 
 # Results of RQs
 
-Go to `RQsResult` folder and run the following ipynb file for each of the RQs-
+Go to `RQsResult` folder and run the following ipynb file for each of the three RQs-
 
 RQ-1:
 
