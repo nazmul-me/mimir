@@ -1,6 +1,6 @@
 {
-    "experiment_name": "pythia_12B_dyn8bit_github_experiment",
-    "base_model": "EleutherAI/pythia-12B",
+    "experiment_name": "starcoder2-3b_org_github_experiment",
+    "base_model": "bigcode/starcoder2-3b",
     "dataset_member": "the_pile",
     "dataset_nonmember": "the_pile",
     "min_words": 100,
@@ -40,4 +40,3 @@
     "dump_cache": false,
     "load_from_hf": true
 }
-
